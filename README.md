@@ -1,2 +1,3 @@
-# apttec-utils
-common JS utilities
+# @apttec/utils library
+
+Reusable JS functionality

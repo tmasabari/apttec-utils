@@ -1,0 +1,37 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "npm: test",
+			"type": "npm",
+			"script": "test",
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": [],
+			"detail": "npm test description",
+			"dependsOn": "web pack build"
+		},
+		{
+			"label": "web pack build",
+			"type": "npm",
+			"script": "build",
+			"path": "src",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"detail": "web pack build",
+			"dependsOn": "eslint: lint whole folder"
+		},
+		{
+			"label": "eslint: lint whole folder",
+			"type": "eslint",
+			"problemMatcher": [
+				"$eslint-stylish"
+			]
+		}
+	]
+}

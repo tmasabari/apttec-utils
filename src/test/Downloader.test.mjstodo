@@ -1,0 +1,77 @@
+import { Downloader } from '../src/Downloader.js';
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
+//const { Downloader } = pkg;
+describe('Downloader', () =>
+{
+    describe('checkChunkedSupport', () =>
+    {
+        it('should return correct support status and file length', async () =>
+        {
+            // Create a mock for the fetch function
+            globalThis.fetch = async () => ({
+                headers: {
+                    get: (header) =>
+                    {
+                        if (header === 'accept-ranges') return 'bytes';
+                        if (header === 'content-length') return '10000'; // Replace with a suitable file length
+                    },
+                },
+            });
+
+            const downloader = new Downloader('http://example.com');
+            const result = await downloader.checkChunkedSupport();
+
+            expect(result.supportsChunked).to.be.true;
+            expect(result.fileLength).to.equal(10000); // Replace with the expected file length
+        });
+    });
+
+    describe('downloadChunked', () =>
+    {
+        it('should download and concatenate chunks correctly', async () =>
+        {
+            // Create a mock for the fetch function to simulate chunked responses
+            globalThis.fetch = async (url, options) =>
+            {
+                const startByte = parseInt(options.headers.Range.split('=')[1].split('-')[0]);
+                const endByte = parseInt(options.headers.Range.split('=')[1].split('-')[1]);
+                const chunkSize = endByte - startByte + 1;
+
+                // Simulate returning a chunk with appropriate content based on startByte and endByte
+                const chunk = new Uint8Array(chunkSize);
+                for (let i = 0; i < chunkSize; i++)
+                {
+                    chunk[i] = startByte + i;
+                }
+
+                return {
+                    ok: true,
+                    arrayBuffer: async () => chunk.buffer,
+                };
+            };
+
+            const downloader = new Downloader('http://example.com');
+            const result = await downloader.downloadChunked(100);
+
+            // Check if the downloaded blob is valid
+            expect(result).to.be.an.instanceOf(Blob);
+
+            // Manually concatenate the expected result based on the mock data
+            const expectedData = new Uint8Array(100);
+            for (let i = 0; i < 100; i++)
+            {
+                expectedData[i] = i;
+            }
+
+            const expectedBlob = new Blob([expectedData]);
+
+            // Compare the downloaded blob with the expected blob
+            const resultArrayBuffer = await result.arrayBuffer();
+            const expectedArrayBuffer = await expectedBlob.arrayBuffer();
+            expect(new Uint8Array(resultArrayBuffer)).to.deep.equal(new Uint8Array(expectedArrayBuffer));
+        });
+    });
+
+    // Add more test cases for other methods as needed
+});

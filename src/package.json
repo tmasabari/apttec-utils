@@ -1,0 +1,48 @@
+{
+  "name": "@apttec/utils",
+  "version": "1.0.1",
+  "description": "Common Js utilities to be used across multiple projects",
+  "main": "./index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha src\\**\\*.test.mjs",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmasabari/apttec-utils.git"
+  },
+  "keywords": [
+    "js",
+    "utitlites",
+    "apttec",
+    "common"
+  ],
+  "author": "Sabarinathan Arthanari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmasabari/apttec-utils/issues"
+  },
+  "homepage": "https://github.com/tmasabari/apttec-utils#readme",
+  "devDependencies": {
+    "chai": "^4.3.8",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "eslint": "^8.49.0",
+    "eslint-plugin-compat": "^4.2.0",
+    "esm": "^3.2.25",
+    "jsdom": "^22.1.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "mocha": "^10.2.0",
+    "tape": "^5.6.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "browserslist": [
+    "> 0.3%",
+    "last 2 versions",
+    "not dead",
+    "Firefox ESR",
+    "not op_mini all"
+  ]
+}

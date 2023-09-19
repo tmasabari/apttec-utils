@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: MultipleDownloader.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: MultipleDownloader.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Copyright (c) 2023 Sabarinathan Arthanari
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+export class MultipleDownloader
+{
+
+    /**
+     * Calls the list of Urls to fetch the data and returns the results
+     * @param {Array} urls to get the data
+     * @returns {Array} The 'results' array will contain the resolved values of all services
+     */
+    async download(urls, isCors)
+    {   
+        const corsMode = { mode: (isCors) ? 'no-cors' : 'cors' };
+        //try 1
+        const promises = [];
+        urls.forEach(url => {
+            const promise = fetch(url, corsMode);
+            promises.push(promise);
+        });
+
+        // Wait for all chunk promises to complete.
+        //await Promise.all(promises);
+
+        
+        //It uses Promise.allSettled() to wait for all promises to either resolve or reject. This method returns an array of objects representing the settlement status of each promise.
+        return await Promise.allSettled(promises).then((settledResults) =>
+        {
+            //try 2
+            const retryPromises = []; //keep track of the indexes of failed promises that need to be retried.
+            const retryIndexes = [];  //the promises for retrying the failed service calls.
+            //iterates over the settledResults array to identify the failed service calls and 
+            //constructs an array of retry promises 
+            settledResults.forEach((settledResult, index) => {
+                if (settledResult.status === 'rejected') {
+                    console.error(`Retrying the call to ${urls[index]}:`, settledResult.reason);
+                    retryPromises.push( fetch(urls[index], corsMode) );
+                    retryIndexes.push(index);
+                }
+            });
+
+            //this promise will fail if any one of the call is failed
+            return Promise.all(retryPromises).then((retryResults) =>
+            {
+                // Combine original successful results and retry results
+                //take initial results and if it is not fulfilled take from retry results and shift the arry
+                const allResults = settledResults.map((settledResult, index) => {
+                    if (settledResult.status === 'fulfilled') {
+                        //If it was originally successful, we use its value from settledResults
+                        return settledResult.value;
+                    } else if (retryIndexes.includes(index)) {
+                        //index = initial url index/first time failed index
+                        //this index is value of retryindex array. Get index of retryindex array's index
+                        const retryIndex = retryIndexes.indexOf(index);
+                        return retryResults[retryIndex];
+                    } 
+                }); 
+
+                console.log('All service calls completed:', allResults);
+                return allResults;
+            });
+        });
+        // handle the catch in calling function using the promise returned nothing to do here
+        // .catch((error) =>
+        // {
+        //     console.error("Error occurred:", error);
+        // });
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li><li><a href="MultipleDownloader.html">MultipleDownloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#autoDownloadUrl">autoDownloadUrl</a></li><li><a href="global.html#createAssignElement">createAssignElement</a></li><li><a href="global.html#createButton">createButton</a></li><li><a href="global.html#createButtonAtParent">createButtonAtParent</a></li><li><a href="global.html#createControl">createControl</a></li><li><a href="global.html#createUrlFromJsonString">createUrlFromJsonString</a></li><li><a href="global.html#createUrlFromObject">createUrlFromObject</a></li><li><a href="global.html#download">download</a></li><li><a href="global.html#downloadSimple">downloadSimple</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#loadStylesheet">loadStylesheet</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Sep 20 2023 02:17:35 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
