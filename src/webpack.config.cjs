@@ -16,7 +16,7 @@ module.exports = {
     mode: 'production',
     devtool: 'source-map',
 
-    entry: './index.js',
+    entry: './modules/index.js',
     // Path to your entry point. From this file Webpack will begin its work
     // if you split the existing file please clean the dist folder first 
     // entry: {

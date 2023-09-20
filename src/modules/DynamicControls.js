@@ -3,7 +3,15 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
+ * 
  */
+
+/** 
+ * The list of utility functions to generate the HTML elements dynamically and to load the resources dynamically.
+ * These utility functions are available individually as well for tree shaking.
+ * @module DynamicControls
+ */
+
 
 /**
  * creates an HTML element and optionally assign the properties

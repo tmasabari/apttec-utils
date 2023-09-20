@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Global</title>
+  <title> Graphics</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -66,15 +66,15 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#download">download</a></li><li><a href="global.html#downloadSimple">downloadSimple</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li><li><a href="module-Graphics.html">Graphics</a></li><li><a href="module-Json.html">Json</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Global</h1>
+                    <p>Module</p>
+                    <h1>Graphics</h1>
                 </header>
                 
 
@@ -85,14 +85,13 @@
 
 <header>
     
-        <h2></h2>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
+        
+            <div class="description">The list of utility functions to manage the graphics operations.These utility functions are available individually as well for tree shaking.</div>
         
 
         
@@ -129,6 +128,13 @@
 
     
 
+    
+        <p class="tag-source">
+            <a href="Graphics.js.html" class="button">View Source</a>
+            <span>
+                <a href="Graphics.js.html">Graphics.js</a>, <a href="Graphics.js.html#line9">line 9</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -160,12 +166,16 @@
 
 
     
-    <h4 class="name" id="download">
-        <a class="href-link" href="#download">#</a>
+    <h4 class="name" id=".getDeviceDPI">
+        <a class="href-link" href="#.getDeviceDPI">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
         
         <span class="code-name">
             
-                download<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Blob>}</span>
+                getDeviceDPI<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -174,7 +184,7 @@
     
     
     <div class="description">
-        start the download asynchronously
+        Identifies the DPI of the screen. Generally the horizontal and vertical DPI will be same for display.
     </div>
     
 
@@ -223,9 +233,9 @@
 
     
         <p class="tag-source">
-            <a href="Downloader.js.html" class="button">View Source</a>
+            <a href="Graphics.js.html" class="button">View Source</a>
             <span>
-                <a href="Downloader.js.html">Downloader.js</a>, <a href="Downloader.js.html#line38">line 38</a>
+                <a href="Graphics.js.html">Graphics.js</a>, <a href="Graphics.js.html#line20">line 20</a>
             </span>
         </p>
     
@@ -256,138 +266,8 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'>- The data from the URL.</div>
+    <div class='param-desc column is-7'>the screen DPI</div>
     
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">Promise.&lt;Blob></code>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="downloadSimple">
-        <a class="href-link" href="#downloadSimple">#</a>
-        
-        <span class="code-name">
-            
-                downloadSimple<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Blob>}</span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        initiates the unparallel download asynchronously
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="Downloader.js.html" class="button">View Source</a>
-            <span>
-                <a href="Downloader.js.html">Downloader.js</a>, <a href="Downloader.js.html#line67">line 67</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>- The data from the URL.</div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">Promise.&lt;Blob></code>
-
-
-    </div>
     
 </div>
 

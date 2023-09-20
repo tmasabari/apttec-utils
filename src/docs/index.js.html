@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> index.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -66,40 +68,61 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li><li><a href="module-Graphics.html">Graphics</a></li><li><a href="module-Json.html">Json</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="DynamicControls%250AThese%2520utility%2520functions%2520are%2520available%2520individually%2520as%2520well%2520for%2520tree%2520shaking.module_.html">DynamicControls
+These utility functions are available individually as well for tree shaking.</a></li><li><a href="index%250ALoads%2520the%2520globalThis.AptTec.Downloader%2520with%2520Downloader%2520class%250ALoads%2520the%2520globalThis.AptTec.DynamicControls%2520with%2520the%2520utility%2520functions%250AThese%2520utility%2520functions%2520are%2520available%2520individually%2520as%2520well%2520for%2520tree%2520shaking.module_.html">index
+Loads the globalThis.AptTec.Downloader with Downloader class
+Loads the globalThis.AptTec.DynamicControls with the utility functions
+These utility functions are available individually as well for tree shaking.</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>index.js</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Copyright (c) 2023 Sabarinathan Arthanari
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
+/**
+ * @module index
+ * Loads the globalThis.AptTec.Downloader with Downloader class
+ * Loads the globalThis.AptTec.DynamicControls with the utility functions
+ * These utility functions are available individually as well for tree shaking.
+ */
+//https://stackoverflow.com/questions/35665759/es6-how-can-you-export-an-imported-module-in-a-single-line
+import { Downloader } from './Downloader.js';
+import * as DynamicControls from './DynamicControls.js';
+export * from './Downloader.js';
+export * from './DynamicControls.js';
 
-    <h3> </h3>
+globalThis.AptTec = globalThis.AptTec || {};
+globalThis.AptTec.Downloader = Downloader;
+globalThis.AptTec.DynamicControls = DynamicControls;
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+// if (typeof module !== 'undefined') { //&amp;&amp; module.exports
+//     // Node.js environment
+//     // module.exports = {
+//     //     function1: require('./utils/function1'),
+//     //     function2: require('./utils/function2'),
+//     //     Downloader: Downloader
+//     // };
+// } else { // Browser environment Your browser-specific code here 
+// }</code></pre>
+        </article>
+    </section>
 
 
 

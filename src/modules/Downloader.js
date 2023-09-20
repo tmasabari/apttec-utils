@@ -3,11 +3,13 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
+ * 
  */
 
 /**
  * Download the file using multiple chunks in parallel to increase the download the speed
  * The server must support accept-ranges header.
+ * 
  */
 export class Downloader {
     /**
@@ -34,10 +36,8 @@ export class Downloader {
     }
 
     /**
-     * initiates the download asynchronously
+     * start the download asynchronously
      * 
-     * @async
-     * @function download
      * @returns {Promise<Blob>} - The data from the URL.
      */
     async download() {
@@ -66,8 +66,6 @@ export class Downloader {
     /**
      * initiates the unparallel download asynchronously
      * 
-     * @async
-     * @function downloadSimple
      * @returns {Promise<Blob>} - The data from the URL.
      */
     async downloadSimple() {

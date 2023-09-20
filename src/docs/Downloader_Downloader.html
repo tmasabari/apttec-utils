@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Global</title>
+  <title> Downloader</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -66,15 +66,15 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#download">download</a></li><li><a href="global.html#downloadSimple">downloadSimple</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li><li><a href="Downloader_Downloader.html">Downloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#download">download</a></li><li><a href="global.html#downloadSimple">downloadSimple</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Global</h1>
+                    <p>Class</p>
+                    <h1>Downloader</h1>
                 </header>
                 
 
@@ -85,7 +85,8 @@
 
 <header>
     
-        <h2></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="Downloader.html">Downloader</a>#</span>Downloader<span class="signature">(url, minFileSize, maxRetries, retryDelay, splits)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -94,78 +95,22 @@
     <div class="container-overview">
     
         
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
 
     
-    <h4 class="name" id="download">
-        <a class="href-link" href="#download">#</a>
+    <h4 class="name" id="Downloader">
+        <a class="href-link" href="#Downloader">#</a>
         
         <span class="code-name">
             
-                download<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Blob>}</span>
+                new Downloader<span class="signature">(url, minFileSize, maxRetries, retryDelay, splits)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -174,7 +119,7 @@
     
     
     <div class="description">
-        start the download asynchronously
+        Download the file using multiple chunks in parallel to increase the download the speedThe server must support accept-ranges header.if file length is lesser than the minFileSize in bytes, the simple download will be used
     </div>
     
 
@@ -185,6 +130,185 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The URL to download from.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>minFileSize</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">the minimum file length in bytes to initiate chunked download. Default value is 1 MB.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>maxRetries</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          9
+      
+      </td>
+  
+
+  <td class="description last">the number of retries will be used in case of a network failure. Default value is 9</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>retryDelay</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          3000
+      
+      </td>
+  
+
+  <td class="description last">the number of milli seconds to wait in case of a netowrk failure. Default value is 3 seconds.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>splits</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          10
+      
+      </td>
+  
+
+  <td class="description last">the number of chunks to be used at a same time. Default value is 10.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -225,7 +349,7 @@
         <p class="tag-source">
             <a href="Downloader.js.html" class="button">View Source</a>
             <span>
-                <a href="Downloader.js.html">Downloader.js</a>, <a href="Downloader.js.html#line38">line 38</a>
+                <a href="Downloader.js.html">Downloader.js</a>, <a href="Downloader.js.html#line27">line 27</a>
             </span>
         </p>
     
@@ -248,160 +372,31 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
 
-<div class="columns">
-    
-    <div class='param-desc column is-7'>- The data from the URL.</div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">Promise.&lt;Blob></code>
 
 
-    </div>
-    
-</div>
 
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="downloadSimple">
-        <a class="href-link" href="#downloadSimple">#</a>
-        
-        <span class="code-name">
-            
-                downloadSimple<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Blob>}</span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        initiates the unparallel download asynchronously
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="Downloader.js.html" class="button">View Source</a>
-            <span>
-                <a href="Downloader.js.html">Downloader.js</a>, <a href="Downloader.js.html#line67">line 67</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>- The data from the URL.</div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">Promise.&lt;Blob></code>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
+                    </div>
+                </div>
             </div>
-        </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     

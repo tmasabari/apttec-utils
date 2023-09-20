@@ -6,6 +6,7 @@
     },
     "recurseDepth": 10,                         // Only go 10 levels deep.
     "opts": {
+        "template": "node_modules/better-docs",
         "destination": "./docs/",               // Where I want my docs to be generated.
         "recurse": true                         // Same as using -r or --recurse
     }

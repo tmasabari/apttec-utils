@@ -1,12 +1,13 @@
 {
   "name": "@apttec/utils",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Common Js utilities to be used across multiple projects",
-  "main": "./index.js",
+  "main": "./modules/index.js",
   "type": "module",
   "scripts": {
     "test": "mocha src\\**\\*.test.mjs",
-    "build": "webpack"
+    "build": "webpack",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -25,15 +26,18 @@
   },
   "homepage": "https://github.com/tmasabari/apttec-utils#readme",
   "devDependencies": {
+    "better-docs": "^2.7.2",
     "chai": "^4.3.8",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "eslint": "^8.49.0",
     "eslint-plugin-compat": "^4.2.0",
     "esm": "^3.2.25",
+    "jsdoc-to-markdown": "^8.0.0",
     "jsdom": "^22.1.0",
     "mini-css-extract-plugin": "^2.7.6",
     "mocha": "^10.2.0",
+    "taffydb": "^2.7.3",
     "tape": "^5.6.6",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"

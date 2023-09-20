@@ -10,7 +10,7 @@ module.exports = {
         node: true
     },
     //exclude built files, third party libraries and config files
-    'ignorePatterns': ['dist/**', 'docs/**', 'Scripts/UTIF.js', 'webpack.config.js'],
+    'ignorePatterns': ['dist/**', 'docs/**', 'out/**', 'Scripts/UTIF.js', 'webpack.config.js'],
     'plugins': ['compat'],
     'extends': ['plugin:compat/recommended', 'eslint:recommended'],
     'overrides': [

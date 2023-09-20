@@ -1,25 +1,84 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: Downloader.js</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Downloader.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Source: Downloader.js</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DynamicControls.html">DynamicControls</a></li><li><a href="module-Graphics.html">Graphics</a></li><li><a href="module-Json.html">Json</a></li></ul><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>Downloader.js</h1>
+                </header>
+                
 
 
 
@@ -31,11 +90,13 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
+ * 
  */
 
 /**
  * Download the file using multiple chunks in parallel to increase the download the speed
  * The server must support accept-ranges header.
+ * 
  */
 export class Downloader {
     /**
@@ -62,10 +123,8 @@ export class Downloader {
     }
 
     /**
-     * initiates the download asynchronously
+     * start the download asynchronously
      * 
-     * @async
-     * @function download
      * @returns {Promise&lt;Blob>} - The data from the URL.
      */
     async download() {
@@ -94,8 +153,6 @@ export class Downloader {
     /**
      * initiates the unparallel download asynchronously
      * 
-     * @async
-     * @function downloadSimple
      * @returns {Promise&lt;Blob>} - The data from the URL.
      */
     async downloadSimple() {
@@ -212,19 +269,26 @@ export class Downloader {
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Downloader.html">Downloader</a></li><li><a href="MultipleDownloader.html">MultipleDownloader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#autoDownloadUrl">autoDownloadUrl</a></li><li><a href="global.html#createAssignElement">createAssignElement</a></li><li><a href="global.html#createButton">createButton</a></li><li><a href="global.html#createButtonAtParent">createButtonAtParent</a></li><li><a href="global.html#createControl">createControl</a></li><li><a href="global.html#createUrlFromJsonString">createUrlFromJsonString</a></li><li><a href="global.html#createUrlFromObject">createUrlFromObject</a></li><li><a href="global.html#download">download</a></li><li><a href="global.html#downloadSimple">downloadSimple</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#loadStylesheet">loadStylesheet</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Sep 20 2023 02:17:35 GMT+0530 (India Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+
 </body>
 </html>
