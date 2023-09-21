@@ -11,7 +11,8 @@
  * The server must support accept-ranges header.
  * 
  */
-export class Downloader {
+export { Downloader };
+class Downloader {
     /**
      * Download the file using multiple chunks in parallel to increase the download the speed
      * The server must support accept-ranges header.

@@ -11,7 +11,8 @@
  * These utility functions are available individually as well for tree shaking.
  * @module DynamicControls
  */
-
+export { autoDownloadUrl, createButton, createControl, createUrlFromJsonString, 
+    createUrlFromObject, loadScript, loadStylesheet, createAssignElement, createButtonAtParent };
 
 /**
  * creates an HTML element and optionally assign the properties
@@ -21,7 +22,7 @@
  * @param {object} the object that containes properties to be assigned to the element. The default value is  undefined
  * @returns {Element} - the created control
  */
-export function createAssignElement(tag, propObject = undefined) {
+function createAssignElement(tag, propObject = undefined) {
     const element = globalThis.document.createElement(tag);
     return (propObject) ? Object.assign(element, propObject) : element;
 }
@@ -36,7 +37,7 @@ export function createAssignElement(tag, propObject = undefined) {
  * @param {string} label  - the text to be inserted between the element
  * @returns {Element} - the created control
  */
-export function createControl(tag, controlClass, iconClass, label) {
+function createControl(tag, controlClass, iconClass, label) {
     const control = createAssignElement(tag);
     if (controlClass) control.className = controlClass;
     if (iconClass) control.innerHTML = `<i class="${iconClass}"></i>`;
@@ -54,7 +55,7 @@ export function createControl(tag, controlClass, iconClass, label) {
  * @param {function} onClick - the click event handler
  * @returns {Element} - the created button
  */
-export function createButton(buttonClass, iconClass, label, onClick) {
+function createButton(buttonClass, iconClass, label, onClick) {
     const button = createControl('button', buttonClass, iconClass, label);
     button.addEventListener('click', onClick);
     return button;
@@ -75,11 +76,11 @@ export function createButton(buttonClass, iconClass, label, onClick) {
  * @param {boolean} preventDuplicate - if the value is true checks for the existing duplicate button and throws error if already exists
  * @returns {Element} - the created button
  */
-export function createButtonAtParent(id, buttonParent, buttonClass, iconClass, buttonText,
+function createButtonAtParent(id, buttonParent, buttonClass, iconClass, buttonText,
     location = 'start', dataAttributesObject = {}, extraInformation = '', preventDuplicate = true) {
 
-    var element = globalThis.document.querySelector(buttonParent) ;
-    if (!(element)) throw 'Could not add a button. Please check buttonParent selector';
+    var parentElement = globalThis.document.querySelector(buttonParent) ;
+    if (!(parentElement)) throw 'Could not add a button. Please check buttonParent selector';
 
     const buttonSelector = buttonParent + ' #' + id;
     if (preventDuplicate) {
@@ -103,9 +104,9 @@ export function createButtonAtParent(id, buttonParent, buttonClass, iconClass, b
                 <i class='${iconClass}'></i>${buttonText}</button>`;
 
     if (location === 'start')
-        element.prepend(buttonTagText);
+        parentElement.innerHTML = buttonTagText + parentElement.innerHTML; //prepend html text
     else
-        element.append(buttonTagText);
+        parentElement.innerHTML += buttonTagText; //append html text
 
     const ButtonObject = globalThis.document.querySelector(buttonSelector);
     return {
@@ -121,7 +122,7 @@ export function createButtonAtParent(id, buttonParent, buttonClass, iconClass, b
  * @param {string} jsonString - the string to be converted to the downloadable URL
  * @returns {string} URL string
  */
-export function createUrlFromJsonString(jsonString) {
+function createUrlFromJsonString(jsonString) {
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     return url;
@@ -134,7 +135,7 @@ export function createUrlFromJsonString(jsonString) {
  * @param {object} object - the object to be converted to the JSON string, blob and then to the URL
  * @returns {string} URL string
  */
-export function createUrlFromObject(object) {
+function createUrlFromObject(object) {
     const jsonString = JSON.stringify(object, null, 2);
     //space (2): A string or number that's used to add whitespace to the output JSON string for formatting purposes.
     return createUrlFromJsonString(jsonString);
@@ -146,7 +147,7 @@ export function createUrlFromObject(object) {
  * @param {string} url - the URL of the resource to download
  * @param {string} filename - the file name is to be used for the download
  */
-export function autoDownloadUrl(url, filename = 'data.json') {
+function autoDownloadUrl(url, filename = 'data.json') {
     const a = createAssignElement('a', {
         href: url, download : filename
     } );
@@ -159,7 +160,7 @@ export function autoDownloadUrl(url, filename = 'data.json') {
  * 
  * @param {string} url - the url to download the style sheet
  */
-export function loadStylesheet(url) {
+function loadStylesheet(url) {
     var link = createAssignElement('link', {
         href: url, rel: 'stylesheet'
     });
@@ -175,7 +176,7 @@ export function loadStylesheet(url) {
  * The defer attribute may be specified with the async attribute, so legacy browsers that only support defer (and not async) fall back to the defer behavior instead of the default blocking behavior.
  * If neither attribute is present, then the script is fetched and executed immediately, blocking further parsing of the page.
  */
-export function loadScript(url, callbackOnLoad = undefined, isDefer = undefined, isAsync = undefined) {
+function loadScript(url, callbackOnLoad = undefined, isDefer = undefined, isAsync = undefined) {
     var script = createAssignElement('script', {
         src: url, type: 'text/javascript', async: isAsync, defer: isDefer, onload : callbackOnLoad
     }); 

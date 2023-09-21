@@ -1,13 +1,13 @@
 {
   "name": "@apttec/utils",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Common Js utilities to be used across multiple projects",
   "main": "./modules/index.js",
   "type": "module",
   "scripts": {
     "test": "mocha src\\**\\*.test.mjs",
     "build": "webpack",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc2md -c jsdoc.json  > README.md; echo"
   },
   "repository": {
     "type": "git",

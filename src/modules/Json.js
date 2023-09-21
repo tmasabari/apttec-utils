@@ -11,6 +11,7 @@
  * These utility functions are available individually as well for tree shaking.
  * @module Json
  */
+export { mergeExistingProperties, firstNCharacters, getKendoSortedData };
 
 /**
  * Deep copies/clones the target object and merges the properties from the source object to the target 
@@ -19,7 +20,7 @@
  * @param {object} source the source object to get the list of properties and values
  * @returns the new merged object
  */
-export function mergeExistingProperties(target, source) {
+function mergeExistingProperties(target, source) {
     let result = JSON.parse(JSON.stringify(target));  //deep copy
     for (const key in source) {
         if ( Object.prototype.hasOwnProperty.call(result, key) ) {
@@ -36,7 +37,7 @@ export function mergeExistingProperties(target, source) {
  * @param {number} n the initial number of characters to trim. integer
  * @returns the modified array
  */
-export function firstNCharacters(jsonArray, propertyToModify, n) {
+function firstNCharacters(jsonArray, propertyToModify, n) {
     jsonArray.forEach(item => {
         if ( (item[propertyToModify]) && item[propertyToModify].length > n) {
             item[propertyToModify] = item[propertyToModify].substring(0, n);
@@ -51,7 +52,7 @@ export function firstNCharacters(jsonArray, propertyToModify, n) {
  * @param {string} gridSelector the HTML element selector of the kendo grid
  * @returns the json array
  */
-export function getKendoSortedData(gridSelector) {
+function getKendoSortedData(gridSelector) {
     var element = globalThis.document.querySelector(gridSelector);
     if (!(element)) return null;  //if it is not a valid element in the document return empty 
     // https://www.telerik.com/forums/get-sorted-items-without-paging
